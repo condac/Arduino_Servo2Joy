@@ -199,19 +199,21 @@ void loop() {
       btimer = micros();
       Joystick.setXAxis(ch1Value);
       Joystick.setYAxis(ch2Value);
-      if (ch3Value>1600) {
+      if (ch3Value<1400) {
         Joystick.setButton(0, true);
       } else {
         Joystick.setButton(0, false);
       }
-      if (ch4Value>1600) {
+      if (ch4Value<1400) {
         Joystick.setButton(1, true);
       } else {
         Joystick.setButton(1, false);
       }
       Joystick.sendState();
+      
       ch1NewValue = false;
       ch2NewValue = false;
+      
       btimer = micros() - btimer;
       if (btimer>1000) {
         digitalWrite(LED_BUILTIN_RX,error);
